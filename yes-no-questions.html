@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yes/No Questions</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            background-color: #ffb6c1;
+            margin: 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .emoji {
+            position: absolute;
+            font-size: 2.5rem;
+            animation: float 6s linear infinite;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(100vh);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh);
+                opacity: 0;
+            }
+        }
+        h1 {
+            font-size: 32px;
+            color: #d63384;
+        }
+        .question {
+            margin: 20px;
+        }
+        .options button {
+            margin: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Yes/No Questions 💍👰💃</h1>
+    <div id="questions-container"></div>
+    <button onclick="submitAnswers()">Submit Answers</button>
+    <script>
+        const emojis = ['💍', '👰', '💃'];
+        for (let i = 0; i < 20; i++) {
+            let emoji = document.createElement("div");
+            emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            emoji.classList.add("emoji");
+            emoji.style.left = Math.random() * 100 + "vw";
+            emoji.style.animationDuration = Math.random() * 3 + 3 + "s";
+            document.body.appendChild(emoji);
+        }
+        
+        const yesNoQuestions = [
+            { question: "Will you be my valentine", correct: "Yes" },
+            { question: "My valentine forever?", correct: "Yes" },
+            { question: "Do you love me more than i do?", correct: "No" },
+            { question: "Are we marrying this year?", correct: "Yes" },
+            { question: "Is this enough", correct: "No" }
+        ];
+
+        let userAnswers = [];
+
+        function displayQuestions() {
+            const container = document.getElementById("questions-container");
+            yesNoQuestions.forEach((q, index) => {
+                const questionDiv = document.createElement("div");
+                questionDiv.classList.add("question");
+
+                const questionText = document.createElement("p");
+                questionText.textContent = (index + 1) + ". " + q.question;
+                questionDiv.appendChild(questionText);
+
+                const optionsDiv = document.createElement("div");
+                optionsDiv.classList.add("options");
+                ["Yes", "No"].forEach(option => {
+                    const optionButton = document.createElement("button");
+                    optionButton.textContent = option;
+                    optionButton.onclick = () => selectAnswer(index, option);
+                    optionsDiv.appendChild(optionButton);
+                });
+                questionDiv.appendChild(optionsDiv);
+
+                container.appendChild(questionDiv);
+            });
+        }
+
+        function selectAnswer(questionIndex, selectedOption) {
+            userAnswers[questionIndex] = selectedOption;
+        }
+
+        function submitAnswers() {
+            let allCorrect = true;
+            for (let i = 0; i < yesNoQuestions.length; i++) {
+                if (userAnswers[i] !== yesNoQuestions[i].correct) {
+                    allCorrect = false;
+                    break;
+                }
+            }
+            if (allCorrect) {
+                setTimeout(function() {
+                    window.location.href = 'finalpage.html';
+                }, 5000);
+            } else {
+                alert("You have answered some questions incorrectly. Try again!");
+                window.location.href = 'index.html';
+            }
+        }
+
+        window.onload = displayQuestions;
+    </script>
+</body>
+</html>

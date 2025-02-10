@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine Celebration</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            background-color: #ff4d6d;
+            color: white;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Background Image */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('/mnt/data/WhatsApp Image 2025-02-09 at 7.25.41 PM.jpeg') no-repeat center center/cover;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        h1 {
+            font-size: 50px;
+            margin-top: 20px;
+        }
+
+        .message {
+            font-size: 24px;
+            margin-top: 10px;
+        }
+
+        /* Fireworks animation */
+        .fireworks {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        @keyframes fireworks {
+            0% { transform: scale(0); opacity: 1; }
+            50% { transform: scale(2); opacity: 0.7; }
+            100% { transform: scale(3); opacity: 0; }
+        }
+
+        .firework {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: yellow;
+            animation: fireworks 1.5s linear infinite;
+        }
+
+        .firework1 { top: 10%; left: 50%; animation-delay: 0s; }
+        .firework2 { top: 20%; left: 70%; animation-delay: 0.3s; }
+        .firework3 { top: 40%; left: 30%; animation-delay: 0.6s; }
+        .firework4 { top: 60%; left: 80%; animation-delay: 0.9s; }
+        .firework5 { top: 80%; left: 20%; animation-delay: 1.2s; }
+
+        /* Floating Love Emojis */
+        .emoji {
+            position: absolute;
+            font-size: 3rem;
+            animation: float 5s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh); opacity: 1; }
+            100% { transform: translateY(-10vh); opacity: 0; }
+        }
+
+        /* Button */
+        .button-container {
+            margin-top: 20px;
+        }
+
+        .next-button {
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #ff1e56;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .next-button:hover {
+            background-color: #ff4d6d;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>So sanjana! ❤️</h1>
+    <p class="message">Will you be my valentine! 🎉</p>
+
+    <!-- Fireworks Effect -->
+    <div class="fireworks">
+        <div class="firework firework1"></div>
+        <div class="firework firework2"></div>
+        <div class="firework firework3"></div>
+        <div class="firework firework4"></div>
+        <div class="firework firework5"></div>
+    </div>
+
+    <!-- Floating Love Emojis -->
+    <script>
+        const emojis = ['❤️', '💍', '💃', '💑', '😍', '💘', '🎆'];
+        for (let i = 0; i < 20; i++) {
+            let emoji = document.createElement("div");
+            emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            emoji.classList.add("emoji");
+            emoji.style.left = Math.random() * 100 + "vw";
+            emoji.style.animationDuration = Math.random() * 3 + 3 + "s";
+            document.body.appendChild(emoji);
+        }
+    </script>
+
+    <!-- Finish Button -->
+    <div class="button-container">
+        <button class="next-button" onclick="YES💍">Finish Celebration</button>
+    </div>
+
+    <script>
+        function finishCelebration() {
+            window.location.href = 'index.html';
+        }
+    </script>
+
+</body>
+</html>
+

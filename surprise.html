@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise</title>
+    <style>
+        /* General Body Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #9b59b6, #8e44ad); /* Purple Gradient */
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 50px;
+            margin-top: 50px;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        p {
+            font-size: 24px;
+            color: white;
+            margin-top: 30px;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #ff66b2; /* Light Pink */
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            margin-top: 40px;
+        }
+
+        button:hover {
+            background-color: #ff3385; /* Darker Pink */
+        }
+
+        /* Floating Balloons, Hearts, and Gift Boxes */
+        .balloon, .heart, .gift {
+            font-size: 30px;
+            position: absolute;
+            animation: float 10s infinite ease-in-out;
+            user-select: none;
+        }
+
+        /* Keyframes for Floating Animation */
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-150px) rotate(180deg);
+            }
+            100% {
+                transform: translateY(0) rotate(360deg);
+            }
+        }
+
+        /* Randomize Duration for Floating Effect */
+        .balloon:nth-child(odd), .heart:nth-child(odd), .gift:nth-child(odd) {
+            animation-duration: 8s;
+        }
+
+        .balloon:nth-child(even), .heart:nth-child(even), .gift:nth-child(even) {
+            animation-duration: 12s;
+        }
+
+        /* Styling for Gift Box */
+        .gift {
+            color: #ffcc00; /* Yellow for Gift Boxes */
+        }
+
+        /* Styling for Balloons */
+        .balloon {
+            color: #ff3366; /* Pink Balloons */
+        }
+
+        /* Styling for Hearts */
+        .heart {
+            color: #ff66b2; /* Light Pink Hearts */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Text -->
+    <h1>Darling, are you excited? 🎉</h1>
+    <p>Choose your next surprise:</p>
+
+    <!-- Button for option 1 -->
+    <button onclick="redirectToOption1()">Wow 🎁</button>
+    
+    <!-- Button for option 2 -->
+    <button onclick="redirectToOption2()">Yes 💖</button>
+
+    <!-- Floating Balloons -->
+    <div class="balloon" style="top: 20%; left: 15%;">🎈</div>
+    <div class="balloon" style="top: 40%; left: 30%;">🎈</div>
+    <div class="balloon" style="top: 60%; left: 50%;">🎈</div>
+    <div class="balloon" style="top: 80%; left: 70%;">🎈</div>
+    
+    <!-- Floating Hearts -->
+    <div class="heart" style="top: 10%; left: 10%;">❤️</div>
+    <div class="heart" style="top: 30%; left: 40%;">💖</div>
+    <div class="heart" style="top: 50%; left: 70%;">💘</div>
+    <div class="heart" style="top: 70%; left: 90%;">💝</div>
+
+    <!-- Floating Gift Boxes -->
+    <div class="gift" style="top: 20%; left: 60%;">🎁</div>
+    <div class="gift" style="top: 50%; left: 20%;">🎁</div>
+    <div class="gift" style="top: 80%; left: 40%;">🎁</div>
+
+  
+</body>
+</html>
+	<script>
+        function redirectToOption1() {
+            window.location.href = 'page1.html'; // Redirect to the first option's page
+        }
+        
+        function redirectToOption2() {
+            window.location.href = 'page2.html'; // Redirect to the second option's page
+        }
+    
+
+      
+      </script>
+
+</body>
+</html>

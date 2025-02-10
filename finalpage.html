@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Page</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            background-color: #ffb6c1;
+            margin: 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .emoji, .love-message {
+            position: absolute;
+            font-size: 2rem;
+            animation: float 6s linear infinite;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(100vh);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh);
+                opacity: 0;
+            }
+        }
+        h1 {
+            font-size: 32px;
+            color: #d63384;
+        }
+        p {
+            font-size: 20px;
+            color: #8b0000;
+        }
+    </style>
+</head>
+<body>
+    <h1>Congratulations Sanjuma! ❤️🎉</h1>
+    <p>Wait for it! 💖</p>
+    <p>Redirecting in <span id="counter">5</span> seconds...</p>
+
+    <script>
+        const emojis = ['❤️', '💖', '💕', '💓', '😍', '💞', '💘'];
+        const loveMessages = ['I Love You!', 'Forever Yours ❤️', 'You are my everything!', 'Be Mine 💘', 'Love Forever 💕'];
+        
+        for (let i = 0; i < 30; i++) {
+            let emoji = document.createElement("div");
+            emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            emoji.classList.add("emoji");
+            emoji.style.left = Math.random() * 100 + "vw";
+            emoji.style.animationDuration = Math.random() * 3 + 3 + "s";
+            document.body.appendChild(emoji);
+        }
+        
+        for (let i = 0; i < 15; i++) {
+            let message = document.createElement("div");
+            message.textContent = loveMessages[Math.floor(Math.random() * loveMessages.length)];
+            message.classList.add("love-message");
+            message.style.left = Math.random() * 100 + "vw";
+            message.style.animationDuration = Math.random() * 4 + 2 + "s";
+            document.body.appendChild(message);
+        }
+
+        var countdown = 5;
+        var counterElement = document.getElementById("counter");
+
+        var interval = setInterval(function() {
+            countdown--;
+            counterElement.textContent = countdown;
+
+            if (countdown <= 0) {
+                clearInterval(interval);
+                alert("Congratulations! Sanjuma love you more");
+                window.location.href = 'celebrations.html';
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

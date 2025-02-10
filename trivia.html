@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine Trivia Round</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            background-color: #ffb6c1;
+            margin: 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .emoji {
+            position: absolute;
+            font-size: 2.5rem;
+            animation: float 6s linear infinite;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(100vh);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh);
+                opacity: 0;
+            }
+        }
+        h1 {
+            font-size: 32px;
+            color: #d63384;
+        }
+        button {
+            font-size: 18px;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Valentine's Trivia Round ❤️💕💖</h1>
+    <div id="questions-container"></div>
+    <button onclick="submitQuiz()">Submit Quiz</button>
+    
+    <script>
+        const emojis = ['💖', '💘', '💕', '💓', '❤️', '😍', '💞'];
+        for (let i = 0; i < 20; i++) {
+            let emoji = document.createElement("div");
+            emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            emoji.classList.add("emoji");
+            emoji.style.left = Math.random() * 100 + "vw";
+            emoji.style.animationDuration = Math.random() * 3 + 3 + "s";
+            document.body.appendChild(emoji);
+        }
+        
+        const questions = [
+            { question: "What color of dress did I wear on our first date?", options: ["Blue", "White", "Green", "Yellow"], correct: "White" },
+            { question: "Which ice cream did you buy me on that day?", options: ["Strawberry", "Watermelon", "Blueberry", "Butterscotch"], correct: "Blueberry" },
+            { question: "How many cars have you gifted me?", options: ["6", "11", "12", "0"], correct: "6" },
+            { question: "What's my favorite song?", options: ["Dagabaz Re", "Watermelon Sugar", "Just Math Mathalli", "Heather"], correct: "Watermelon Sugar" },
+            { question: "My favorite food to eat with you?", options: ["Golgappa", "Vada Pav", "Cake", "Ice Cream"], correct: "Vada Pav" },
+            { question: "My favorite destination?", options: ["New Zealand", "Maldives", "Goa", "England"], correct: "New Zealand" },
+            { question: "What day is our anniversary celebrated?", options: ["June 7", "July 9", "June 8", "June 6"], correct: "February 14" },
+            { question: "When are we getting married?", options: ["In two years", "Four years", "Five years", "This year"], correct: "This year" },
+            { question: "How much would you rate me?", options: ["3", "8", "10", "6"], correct: "6" },
+            { question: "Which country started the tradition of Valentine's Day?", options: ["USA", "Italy", "France", "England"], correct: "France" }
+        ];
+
+        function displayQuestions() {
+            const container = document.getElementById("questions-container");
+            questions.forEach((q, index) => {
+                const questionDiv = document.createElement("div");
+                
+                const questionText = document.createElement("p");
+                questionText.textContent = (index + 1) + ". " + q.question;
+                questionDiv.appendChild(questionText);
+                
+                const optionsDiv = document.createElement("div");
+                q.options.forEach(option => {
+                    const optionLabel = document.createElement("label");
+                    
+                    const optionInput = document.createElement("input");
+                    optionInput.type = "checkbox";
+                    optionInput.value = option;
+                    optionInput.name = "question" + index;
+                    
+                    optionLabel.appendChild(optionInput);
+                    optionLabel.appendChild(document.createTextNode(option));
+                    optionsDiv.appendChild(optionLabel);
+                    optionsDiv.appendChild(document.createElement("br"));
+                });
+                questionDiv.appendChild(optionsDiv);
+                container.appendChild(questionDiv);
+            });
+        }
+
+        function submitQuiz() {
+            let correctAnswers = 0;
+            questions.forEach((q, index) => {
+                const selectedOption = document.querySelector(`input[name='question${index}']:checked`);
+                if (selectedOption && selectedOption.value === q.correct) {
+                    correctAnswers++;
+                }
+            });
+            
+            if (correctAnswers >= 7) {
+                window.location.href = "next-round.html";
+            } else {
+                window.location.href = "exit.html";
+            }
+        }
+
+        window.onload = displayQuestions;
+    </script>
+</body>
+</html>
